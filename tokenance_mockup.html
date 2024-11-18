@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Document</title>
+
+    <style>
+
+        :root{
+        --PrimaryColor: hsl(199,100%,33%);
+        --SecondaryColor: hsl(187,85%,43%);
+        --GradientColor: linear-gradient(to right, hsl(187,85%,43%),hsl(199,100%,33%));
+        --WhiteColor: hsl(0,0%,100%);
+        --BlackColor:hsl(201,33%,16%);
+        --TextColor:hsl(240,4%,36%);
+        --WhiteColorDeam:hsl(0,0%,93%);
+        --GrayText:rgb(190,190,190);
+        --InputColor:rgb(239,239,239);
+        --BodyColor:rgb(240,240,240);
+        --cardBG:rgb(225,225,225)
+        }
+
+        body{
+            margin: 0;
+            color: dimgray;
+           }
+
+
+        textarea{
+            resize: none;
+            padding: 5px;
+        }
+
+        .special{
+            background-color: red;
+        }
+        textarea:disabled{
+            cursor: default;
+            background-color:white ;
+            color:black;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+
+        .mainContainer{
+            font-family: sans-serif;
+            display: flex;
+            height: 70vh;
+            gap:20px;
+            padding:20px
+        }
+
+        .typeInterface{
+            display: flex;
+            gap:30px;
+            padding:10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            min-height: 10vh;
+        }
+
+        .typeWindow{
+            min-width:50vw;
+            width:100%;
+        }
+
+        button{
+            min-width:10vw;
+            background-color: rgba(0, 0, 0, 0);
+            border: 1px solid grey;
+            border-radius: 5px;
+            color: dimgray;
+        }
+
+        button:hover{
+
+            background-color: rgba(0, 0, 0, 0.03);
+            border: 1px solid grey;
+            border-radius: 5px;
+            color: dimgray;
+
+        }
+        button:active{
+
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        color: lightgray
+
+        }
+
+        button:disabled{
+
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        color: lightgray
+
+        }
+
+
+        .mainChat{
+
+            height: -webkit-fill-available;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+        }
+        .chatInterface{
+            height: -webkit-fill-available;
+            width:100%;
+            border: 1px solid grey;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            overflow: scroll;
+            margin-bottom: 10px;
+        }
+
+        .historyChat{
+            border-radius: 5px;
+            border: 1px solid grey;
+            width:20vw;
+            min-width: 20vw;
+            padding: 20px;
+        }
+
+        .chatLineSent{
+            display: flex;
+            justify-content: flex-end;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .message_sent{
+            max-width: 80%;
+            min-width: 20%;
+            width:fit-content;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid grey;
+        }
+
+        .chatLineRec{
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .message_rec{
+            max-width: 80%;
+            width:fit-content;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid grey;
+        }
+
+        .mainMenu{
+            font-family: sans-serif;
+            padding-left:20px;
+            padding-right:20px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .mainMenu_NoPadding{
+            font-family: sans-serif;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .menuLeft{
+            display: flex;
+            gap:20px;
+        }
+
+        .logodiv img{
+            
+         height: 7.5vh;
+         width: 15vh;
+         object-fit: cover;
+            
+        }
+
+        .userContainer{
+            display: flex;
+            gap: 20px;
+            align-items: center
+        }
+
+        .userPic img{
+                        
+         height: 7.5vh;
+         width: 7.5vh;
+         object-fit: none;
+         object-position: 40% 40%;
+         border-radius: 100%;
+            
+        }
+
+        .switcher{
+            display: flex;
+            flex-direction: column;
+            gap:5px
+        }
+
+        .menuRight{
+            display: flex;
+            align-items: center;
+            gap:20px;}
+
+        .chatLog{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .iconGrid{
+            display: flex;
+            gap:10px
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mainContainer{
+                flex-direction: column;
+                height: 85vh;
+            }
+
+            .mainChat{
+                max-height: -webkit-fill-available;
+                height: auto;
+            }
+            .mainMenu{
+                flex-wrap: wrap;
+                gap: 20px;
+
+                justify-content: space-around;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .menuLeft{
+
+                flex-wrap: wrap;
+            }
+
+            .menuRight{
+
+                flex-wrap: wrap;
+            }
+
+            .historyChat{width: auto;
+                display: none;
+             overflow: scroll;
+                height: 25vh;
+                min-height: 20vh;
+            }
+
+            .chatInterface{
+                max-height: 80vh;
+            }
+
+            textarea{
+                min-width: 50vw
+            }
+
+            #invia{min-width: 20vw}
+
+            .logodiv img{width:20vw;
+                padding-left: 20%;
+                padding-right: 20%    
+            ;}
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="mainMenu">
+        <div class="menuLeft">
+            <div class="logodiv">
+                <img src="https://media.licdn.com/dms/image/v2/D4E0BAQHa4WDleIxJWw/company-logo_200_200/company-logo_200_200/0/1690192161114?e=1739404800&v=beta&t=5tNII7TKx5rLI365F6tfCS7ogad9qfKakFJ5P3lY_UQ" alt="">
+            </div>
+
+        </div>
+        <div class="menuRight">
+            <div class="switcher">
+                <button> chiaro</button>
+                <button> scuro</button>
+            </div>
+
+            <div class="userContainer">
+
+                <div class="userPic">
+                    <img src="https://media.licdn.com/dms/image/v2/C5603AQFrv_kr-kuQLw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1607965526862?e=1736985600&v=beta&t=f8wPZVDvEm4eZJv0kxwYlaYI2zUTPaDimzqstgTHbpU" alt="">
+                </div>
+
+                <div class="userName">
+                    <b>Ennio Sorrentino ▾</b><br>
+                    Administrator                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    
+    <div class="mainContainer">
+
+        <div class="historyChat">
+            <div class="storicTitle">
+                <div class="mainMenu_NoPadding">
+                    <div class="menuLeft">
+                        <b>Storico Chat</b>
+                    </div>
+                    <div class="menuRight">
+                        <div class="iconGrid">
+
+                        <span class="material-symbols-outlined">
+                            delete_history
+                        </span>
+
+                        <div class="material-symbols-outlined" onclick="notShowHistory()">
+                            close
+                        </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <hr>
+            <div class="chatLog">
+                <b>  <div class="material-symbols-outlined" style="font-size: 15px;">
+                    delete
+                </div>
+                Demo</b>
+                <div style="font-size: small;">Oggi, 00:44 ➤</div>
+            </div>
+            <hr>
+
+
+            <div class="chatLog">
+                <b>  <div class="material-symbols-outlined" style="font-size: 15px;">
+                    delete
+                </div>
+                Demo</b>
+                <div style="font-size: small;">Oggi, 00:44 ➤</div>
+            </div>
+            <hr>
+
+
+            <div class="chatLog">
+                <b>  <div class="material-symbols-outlined" style="font-size: 15px;">
+                    delete
+                </div>
+                Demo</b>
+                <div style="font-size: small;">Oggi, 00:44 ➤</div>
+            </div>
+            <hr>
+
+        </div>
+        <div class="mainChat">
+
+            <div class="mainMenu">
+                <div class="menuleft">
+                    <b>Demo</b>
+                </div>
+                <div class="menuRight">
+                    <div class="iconGrid">
+
+
+                        <div class="material-symbols-outlined" onclick="location.reload()">
+                            delete
+                        </div>
+
+                        <span class="material-symbols-outlined">
+                            info
+                        </span>
+
+
+                        <span class="material-symbols-outlined" onclick="showHistory()"> 
+                            history
+                        </span>
+
+                        <span class="material-symbols-outlined" onclick="location.reload()">
+                            open_in_new
+                        </span>
+
+
+                    </div>
+
+                    <select id="selectChat" name="chatlist" >
+                        
+                        <option value="Demoo">Demo</option>
+                        <option disabled="true" value="Def">------</option>
+                    </select>
+
+                    <button>Contesto Automatico</button>
+                    <button>Contesto Manuale</button>
+                </div>
+            </div>
+
+        <div id="chatInterface" class="chatInterface">
+            
+
+
+
+
+        </div>
+        <div class="typeInterface">
+            <textarea id="myQ" class="typeWindow" placeholder="Scrivi qui la tua domanda"></textarea>
+            <button id="invia"> Invia</button>
+    
+        </div>
+
+        </div>
+        
+
+
+    </div>
+
+    <script>
+        var currentQuestion = 0
+        var currentLine = 0
+        var question = "mi consigli una crema corpo per pelle secca?"
+        var answer = "Per la pelle secca, è importante scegliere una crema corpo altamente idratante e nutriente. Ecco le nostre migliori opzioni disponibili:<br><br> 1. SilkGlow Crema Idratante: Contiene ceramidi e acido ialuronico, ottimi per rinforzare la barriera della pelle e mantenere l’idratazione. È adatta anche per le pelli sensibili.<br><br> 2. Luna Glow: Questa crema è specificamente formulata per pelle secca e molto secca, con una texture ricca e lenitiva. È ideale per chi soffre di irritazioni o prurito, poiché aiuta a calmare la pelle.<br><br> Ti consiglio di scegliere una crema con ingredienti idratanti come acido ialuronico, glicerina, urea o burro di karité per ottenere il massimo beneficio."
+
+        textarea = document.getElementById("myQ")
+
+        function notShowHistory(){
+            document.getElementsByClassName("historyChat")[0].style.display="none"
+        }
+
+        function showHistory(){
+            document.getElementsByClassName("historyChat")[0].style.display="block"
+        }
+
+
+
+
+        document.getElementById("invia").onclick = function(){
+
+            
+            checkQuestion()
+
+            //ADD THE NEW MESSAGES TO THE CHAT
+            console.log(document.getElementById("myQ").value)
+
+
+            const chatLine = document.createElement("div")
+            const message = document.createElement("div")
+
+            const answerChatline = document.createElement("div")
+            const answerMessage = document.createElement("div")
+        
+
+
+            chatLine.classList.add("chatLineSent")
+            chatLine.id ="chatline"+currentQuestion+"sent"
+
+            document.getElementById("chatInterface").appendChild(chatLine)
+
+            message.innerHTML= question;
+            message.classList.add("message_sent")
+            document.getElementById("chatline"+currentQuestion+"sent").appendChild(message)
+
+            document.getElementById('chatInterface').scrollTop = document.getElementById('chatInterface').scrollHeight;
+
+
+
+            answerChatline.classList.add("chatLineRec")
+            answerChatline.id ="chatline"+currentQuestion+"rec"
+
+            document.getElementById("chatInterface").appendChild(answerChatline)
+
+
+
+
+            //answerMessage.innerHTML= answer;
+            answerMessage.classList.add("message_rec")
+            answerMessage.id="message"+currentQuestion+"rec"
+            document.getElementById("chatline"+currentQuestion+"rec").appendChild(answerMessage)
+            
+            document.getElementById('chatInterface').scrollTop = document.getElementById('chatInterface').scrollHeight;
+
+            currentLine = currentLine+1
+            
+            //DISPLAY THE ANSWER WORD BY WORD
+            var LetterCount = 1
+            var targetId = "message"+currentQuestion+"rec"
+
+
+            var count = 0
+
+            // Function to execute before `type` starts
+            function preFunction() {
+                document.getElementById("invia").disabled=true
+                 if(count%3==0){ document.getElementById(targetId).innerHTML = "● ○ ○";}
+                 else if(count%3==1){ document.getElementById(targetId).innerHTML = "○ ● ○";}
+                 else if(count%3==2){ document.getElementById(targetId).innerHTML = "○ ○ ●";}
+                 count++
+
+            }
+
+            preFunction()
+            // Start the `preFunction` with `setInterval`
+            var preInterval = setInterval(preFunction, 100);
+
+
+            function type(param){
+                document.getElementById("invia").disabled=false
+                const typingInterval = setInterval(function() {
+                    clearInterval(preInterval);
+                    if(LetterCount<= param.length){
+
+                    document.getElementById(targetId).innerHTML = param.slice(0,LetterCount)+"● ● ●"
+                    LetterCount= LetterCount+5
+                    document.getElementById('chatInterface').scrollTop = document.getElementById('chatInterface').scrollHeight;
+                    } else {
+                        document.getElementById(targetId).innerHTML =param
+                        clearInterval(typingInterval);
+                        LetterCount = 1
+
+
+                        
+                    }}, 
+                50) 
+            }
+
+            setTimeout(function() {type(answer)},2000)
+            
+
+            console.log(currentQuestion)
+
+
+            currentQuestion = currentQuestion+1
+
+
+            document.getElementById("myQ").value = ""
+
+            
+            
+
+        };
+
+
+        
+        document.getElementById("myQ").onclick = function(){
+            
+
+            console.log(document.getElementById("myQ").classList)
+
+            checkQuestion()
+            var LetterCount = 1
+
+            
+            document.getElementById("myQ").focus = true;
+            document.getElementById("myQ").style.pointerEvents = "none";
+
+            
+                const newtypingInterval = setInterval(function() {
+
+                if(LetterCount<= question.length){
+                document.getElementById("myQ").value = question.slice(0,LetterCount)
+                LetterCount++} else{
+                    document.getElementById("myQ").style.pointerEvents = "auto";
+                    clearInterval(newtypingInterval)
+                }
+            }, 100) 
+        }
+
+        function checkQuestion(){
+            if(currentQuestion==1){
+                question = "mi consigli una crema corpo per pelle secca tenendo conto che sono allergica alla glicerina?"
+                answer = "Se sei allergica alla glicerina, è importante scegliere una crema corpo priva di questo ingrediente, ma che fornisca comunque un’idratazione intensa per la pelle secca. Ecco alcune opzioni senza glicerina:<br><br> ● 1. Pure Caress (senza glicerina):<br> Questa crema corpo è formulata per pelli secche e sensibili e contiene burro di karité e niacinamide per un’idratazione profonda senza irritare la pelle. Assicurati di controllare l’etichetta, poiché alcune formulazioni potrebbero contenere tracce di glicerina. Ecco il  <a href='https://example.com' target='_blank'> <span style=color:blue> link</span></a> specifico<br><br> ● 2. Aura di Seta Latte Fluido:<br> Formulata per pelle secca e molto secca, questa crema è senza glicerina e contiene complessi lipidici e selettivi per nutrire e lenire la pelle. La sua texture è leggera ma idratante, ideale per l'uso quotidiano. <br><br>  ●  3. Floral Velvet:<br> Una crema corpo ricca senza glicerina, formulata con olio di soia e burro di karité ed estratti di mandorla e olio di mandorla dolce per nutrire in profondità la pelle. Ha una texture burrosa ma si assorbe velocemente, lasciando la pelle morbida. Assicurati sempre di leggere attentamente l’etichetta degli ingredienti per evitare tracce di glicerina o altri ingredienti che potrebbero irritare la tua pelle. A questo <a href='https://example.com' target='_blank'><span style=color:blue> link</span></a> trovi le schede"
+            } else if(currentQuestion==2){
+                question="Mi dici gli ingredienti della vostra Essenza di Luce viso?"
+                answer="Gli ingredienti principali di Essenza di Luce viso includono:<br><br> ● Acqua: acqua, la base della formula.<br><br> ● Paraffinum Liquidum: un emolliente che aiuta a trattenere l’umidità.<br><br> ● Glycerin: un umettante che attira acqua nella pelle.<br><br> ● Alcohol Denat.: può servire a stabilizzare la formula.<br><br> ●  Cetearyl Alcohol: un alcol grasso che funziona come emulsionante e emolliente. <br><br> ● Sodium Polyacrylate: un addensante. <br><br> ● Citric Acid: regola il pH della crema. <br><br> ● Parfum: fragranza.<br><br> ● Tocopheryl Acetate: forma di vitamina E, con proprietà antiossidanti.<br><br> Questa crema ha ingredienti che puntano a idratare, proteggere e ammorbidire la pelle, ma la Essenza di Luce viso è particolarmente densa e ricca, ideale per le pelli molto secche.<br><br> Ti consiglio di controllare sempre l’etichetta dei nostri prodotti la trovi  <a href='https://example.com' target='_blank'><span style=color:blue>qui</span></a> per una lista aggiornata e dettagliata degli ingredienti, poiché le formulazioni possono variare nel tempo o tra i vari mercati."
+            }
+            else if(currentQuestion==3){
+                question="Bene, voglio comprare Essenza di Luce viso, mi puoi aiutare?"
+                answer="Il prodotto 'Essenza di Luce Viso' è stato aggiunto al tuo carrello, Ecco il <a href='https://example.com' target='_blank'> <span style=color:blue>link</span></a>. <br>Scegli il pack più adatto e in due click ti consegneremo 'Essenza di Luce viso'.<br>Posso esserti utile in altre richieste? Vuoi avere maggiori informazioni?"
+            }
+            else{
+
+            }
+        }
+
+
+
+        
+    </script>
+    
+</body>
+</html>
