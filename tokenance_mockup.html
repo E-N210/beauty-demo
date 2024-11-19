@@ -203,7 +203,7 @@
                         
          height: 7.5vh;
          width: 7.5vh;
-         object-fit: none;
+         object-fit: cover;
          object-position: 40% 40%;
          border-radius: 100%;
             
@@ -308,7 +308,7 @@
             <div class="userContainer">
 
                 <div class="userPic">
-                    <img src="https://media.licdn.com/dms/image/v2/C5603AQFrv_kr-kuQLw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1607965526862?e=1736985600&v=beta&t=f8wPZVDvEm4eZJv0kxwYlaYI2zUTPaDimzqstgTHbpU" alt="">
+                    <img src="https://thispersondoesnotexist.com/" alt="">
                 </div>
 
                 <div class="userName">
@@ -443,6 +443,28 @@
         var currentLine = 0
         var question = "mi consigli una crema corpo per pelle secca?"
         var answer = "Per la pelle secca, è importante scegliere una crema corpo altamente idratante e nutriente. Ecco le nostre migliori opzioni disponibili:<br><br> 1. SilkGlow Crema Idratante: Contiene ceramidi e acido ialuronico, ottimi per rinforzare la barriera della pelle e mantenere l’idratazione. È adatta anche per le pelli sensibili.<br><br> 2. Luna Glow: Questa crema è specificamente formulata per pelle secca e molto secca, con una texture ricca e lenitiva. È ideale per chi soffre di irritazioni o prurito, poiché aiuta a calmare la pelle.<br><br> Ti consiglio di scegliere una crema con ingredienti idratanti come acido ialuronico, glicerina, urea o burro di karité per ottenere il massimo beneficio."
+        var nomi = [ "Luca", "Giulia", "Matteo", "Francesca", "Andrea", "Alessia", "Marco", 
+            "Sofia", "Giovanni", "Chiara", "Antonio", "Martina", "Riccardo", 
+            "Alice", "Davide", "Elisa", "Gabriele", "Valentina", "Nicola", 
+            "Serena", "Stefano", "Caterina", "Lorenzo", "Roberta", "Emanuele", 
+            "Federica", "Simone", "Silvia", "Francesco", "Marta", "Alessandro", 
+            "Aurora"
+        ]
+
+        var cognomi = [
+            "Rossi", "Bianchi", "Esposito", "Ferrari", "Russo", "Romano", "Gallo", 
+            "Ricci", "Marino", "Greco", "Conti", "De Luca", "Costa", "Mancini", 
+            "Bruno", "Lombardi", "Moretti", "Barbieri", "Fontana", "Santoro", 
+            "Rinaldi", "Caruso", "Ferrara", "Gatti", "Leone", "Giordano", 
+            "Martini", "Ferri", "Bianco", "Marchetti", "Testa", "Pellegrini"
+        ]
+        var nome=nomi[Math.floor(Math.random()*nomi.length)]
+        var cognome= cognomi[Math.floor(Math.random()*cognomi.length)]
+
+        console.log(nome,cognome)
+
+        document.getElementsByClassName("userName")[0].innerHTML = "<b> "+nome+" "+cognome+" ▾</b><br> Administrator "
+
 
         textarea = document.getElementById("myQ")
 
@@ -453,6 +475,9 @@
         function showHistory(){
             document.getElementsByClassName("historyChat")[0].style.display="block"
         }
+
+        const button = document.getElementById("invia");
+        button.disabled = false; // Try disabling first
 
 
 
@@ -513,7 +538,8 @@
 
             // Function to execute before `type` starts
             function preFunction() {
-                document.getElementById("invia").disabled=true
+
+                 document.getElementById("invia").disabled=true
                  if(count%3==0){ document.getElementById(targetId).innerHTML = "● ○ ○";}
                  else if(count%3==1){ document.getElementById(targetId).innerHTML = "○ ● ○";}
                  else if(count%3==2){ document.getElementById(targetId).innerHTML = "○ ○ ●";}
@@ -527,15 +553,19 @@
 
 
             function type(param){
-                document.getElementById("invia").disabled=false
+                clearInterval(preInterval);
+                document.getElementById("invia").disabled=false;
+
                 const typingInterval = setInterval(function() {
-                    clearInterval(preInterval);
+                    
+                   // document.getElementById("invia").disabled = false
                     if(LetterCount<= param.length){
 
                     document.getElementById(targetId).innerHTML = param.slice(0,LetterCount)+"● ● ●"
                     LetterCount= LetterCount+5
                     document.getElementById('chatInterface').scrollTop = document.getElementById('chatInterface').scrollHeight;
                     } else {
+
                         document.getElementById(targetId).innerHTML =param
                         clearInterval(typingInterval);
                         LetterCount = 1
@@ -553,7 +583,6 @@
 
 
             currentQuestion = currentQuestion+1
-
 
             document.getElementById("myQ").value = ""
 
