@@ -198,7 +198,19 @@
             gap: 20px;
             align-items: center
         }
-
+        .userPic{
+            color: white;
+            background-color: black;
+            border-radius: 50%;
+            padding: 1vw;
+            width: 1.5vw;
+            height: 1.5vw;
+            display: flex;
+            /* text-align: center; */
+            /* vertical-align: middle; */
+            justify-content: center;
+            align-items: center;
+        }
         .userPic img{
                         
          height: 7.5vh;
@@ -308,11 +320,11 @@
             <div class="userContainer">
 
                 <div class="userPic">
-                    <img src="https://thispersondoesnotexist.com/" alt="">
+                    DU
                 </div>
 
                 <div class="userName">
-                    <b>Ennio Sorrentino ▾</b><br>
+                    <b>Demo User ▾</b><br>
                     Administrator                    
                 </div>
             </div>
@@ -463,7 +475,7 @@
 
         console.log(nome,cognome)
 
-        document.getElementsByClassName("userName")[0].innerHTML = "<b> "+nome+" "+cognome+" ▾</b><br> Administrator "
+       // document.getElementsByClassName("userName")[0].innerHTML = "<b> "+nome+" "+cognome+" ▾</b><br> Administrator "
 
 
         textarea = document.getElementById("myQ")
